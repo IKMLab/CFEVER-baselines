@@ -50,3 +50,25 @@ python eval_doc_retrieval.py \
 ```
 Note that our evaluation of document retrieval aligns with the way of BEVERS. See [BEVERS's code](https://github.com/mitchelldehaven/bevers/blob/main/src/eval/measure_tfidf.py).
 - You can also try to evaluate with the first k predicted pages by setting the `--top_k` parameter. For example, `--top_k 10` will evaluate the first 5 predicted pages.
+
+### Sentence Retrieval and Claim Verification
+We follow the same evaluation script of [fever-scorer](https://github.com/sheffieldnlp/fever-scorer) and add some parameters to run the script:
+```
+python eval_sent_retrieval_rte.py \
+--gt_file $GOLD_FILE \
+--submission_file $PRED_FILE
+```
+where `$GOLD_FILE` is the path to the file with gold answers in the `jsonl` format and `$PRED_FILE` is the path to the file with predicted answers in the `jsonl` format. The example command is shown below:
+```
+python eval_sent_retrieval_rte.py \
+--gt_file simple_baseline/data/dev.jsonl \
+--submission_file simple_baseline/data/dumb_dev_pred.jsonl
+```
+The script will output the scores of sentence retrieval:
+- Precision
+- Recall
+- F1-score
+
+and the scores of claim verification:
+- Accuracy (printed as `Label accuracy`)
+- FEVER Score (printed as `Strict accuracy`)
