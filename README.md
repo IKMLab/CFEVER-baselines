@@ -49,7 +49,7 @@ python eval_doc_retrieval.py \
 --doc_pred_file simple_baseline/data/bm25/dev_doc10.jsonl
 ```
 Note that our evaluation of document retrieval aligns with the way of BEVERS. See [BEVERS's code](https://github.com/mitchelldehaven/bevers/blob/main/src/eval/measure_tfidf.py).
-- You can also try to evaluate with the first k predicted pages by setting the `--top_k` parameter. For example, `--top_k 10` will evaluate the first 5 predicted pages.
+- You can also try to evaluate with the first k predicted pages by setting the `--top_k` parameter. For example, `--top_k 10` will evaluate the first 10 predicted pages.
 
 ### Sentence Retrieval and Claim Verification
 We follow the same evaluation script of [fever-scorer](https://github.com/sheffieldnlp/fever-scorer) and add some parameters to run the script:
