@@ -24,7 +24,29 @@ CFEVER is a Chinese Fact Extraction and VERification dataset. Similar to [FEVER 
 2. Sentence Retrieval: Select relevant sentences from the retrieved documents. 
 3. Claim Verification: Determine whether the claim is “Supports”, “Refutes”, or “Not Enough Info.” Generally, in this stage, a model performs claim verification based on the provided claim in the dataset and the selected sentences from the stage 2 (sentence retrieval).
 
+## Installation
+```
+pip install -r requirements.txt
+```
 
 ## Our simple baseline
 Plase refer to the [simple_baseline](simple_baseline) folder and check the [README.md](simple_baseline/README.md) for more details.
 
+## Evaluations
+### Document Retrieval
+To evaluate document retrieval, you need to pass two paths to the script `eval_doc_example.py`:
+- `$GOLD_FILE`: the path to the file with gold answers in the `jsonl` format.
+- `$DOC_PRED_FILE`: the path to the file with predicted documents in the `jsonl` format.
+```
+python eval_doc_retrieval.py \
+--source_file $GOLD_FILE \
+--doc_pred_file $DOC_PRED_FILE
+```
+The example command is shown below:
+```
+python eval_doc_retrieval.py \
+--source_file simple_baseline/data/dev.jsonl \
+--doc_pred_file simple_baseline/data/bm25/dev_doc10.jsonl
+```
+Note that our evaluation of document retrieval aligns with the way of BEVERS. See [BEVERS's code](https://github.com/mitchelldehaven/bevers/blob/main/src/eval/measure_tfidf.py).
+- You can also try to evaluate with the first k predicted pages by setting the `--top_k` parameter. For example, `--top_k 10` will evaluate the first 5 predicted pages.

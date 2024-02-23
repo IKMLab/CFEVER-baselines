@@ -1,9 +1,4 @@
 # Simple Baseline for CFEVER
-## Installation
-```
-cd simple_baseline
-pip install -r requirements.txt
-```
 
 ## Document Retrieval
 Please refer to the steps in the [elasticsearch](https://github.com/elastic/elasticsearch) repository to run BM25 for document retrieval. We provide our results in the [data/bm25_test](data/bm25_test) directory.
